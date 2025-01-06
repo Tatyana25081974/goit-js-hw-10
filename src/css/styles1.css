@@ -48,16 +48,33 @@ button[data-start]:disabled {
 
 .timer {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 24px;
-    border-radius: 8px;
-    padding: 16px;
-    max-width: 280px;
-    height: auto;
-    background: #f5f5f5;
-    transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+        /* Використовує гнучке розташування елементів */
+        align-items: center;
+        /* Центрування полів (вертикально) */
+        justify-content: center;
+        /* Центрування полів (горизонтально) */
+        flex-direction: row;
+        /* Поля будуть розташовані горизонтально (в рядок) */
+        gap: 16px;
+        /* Відстань між полями */
+        border-radius: 12px;
+        /* Заокруглення кутів таймера */
+        padding: 24px;
+        /* Внутрішній відступ для таймера */
+        width: 100%;
+        /* Таймер займає всю ширину контейнера */
+        max-width: 600px;
+        /* Але не більше 600px */
+        height: auto;
+        /* Висота автоматично підлаштовується під контент */
+        background: #f9f9f9;
+        /* Світлий фон для таймера */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Додає легку тінь для об’єму */
+        border: 2px solid #e0e0e0;
+        /* Світло-сірий бордер */
+        transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+        /* Анімація при зміні стану */
 }
 /* Стан "hover" */
 .timer:hover {
@@ -83,15 +100,25 @@ button[data-start]:disabled {
 
 .field {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 16px;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    padding: 10px 15px;
-    width: 100px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        /* Робимо контейнер гнучким */
+        flex-direction: column;
+        /* Елементи розташовуються вертикально (значення над підписом) */
+        align-items: center;
+        /* Центруємо текст горизонтально */
+        font-size: 14px;
+        /* Базовий розмір тексту */
+        background-color: #ffffff;
+        /* Білий фон для кожного поля */
+        border: 1px solid #dcdcdc;
+        /* Світло-сірий бордер для контурів полів */
+        border-radius: 8px;
+        /* Заокруглені кути */
+        padding: 12px;
+        /* Внутрішній відступ */
+        width: 120px;
+        /* Фіксована ширина поля */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        /* Додає невелику тінь */
 }
 
 .field .value {
