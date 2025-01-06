@@ -47,33 +47,21 @@ button[data-start]:disabled {
 }
 
 .timer {
+    
     display: flex;
-        /* Використовує гнучке розташування елементів */
-        align-items: center;
-        /* Центрування полів (вертикально) */
-        justify-content: center;
-        /* Центрування полів (горизонтально) */
+        align-items: flex-start;
+        justify-content: flex-start;
         flex-direction: row;
-        /* Поля будуть розташовані горизонтально (в рядок) */
         gap: 24px;
-        /* Відстань між полями */
         border-radius: 12px;
-        /* Заокруглення кутів таймера */
         width: 100%;
-        /* Таймер займає всю ширину контейнера */
-        max-width: 600px;
-        /* Але не більше 600px */
+        max-width: 346px;
         height: auto;
-        /* Висота автоматично підлаштовується під контент */
         background: #f9f9f9;
-        /* Світлий фон для таймера */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* Додає легку тінь для об’єму */
         border: 2px solid #e0e0e0;
-        /* Світло-сірий бордер */
         transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
-        /* Анімація при зміні стану */
-}
+    }
 /* Стан "hover" */
 .timer:hover {
     background-color: #e9ecef;
@@ -98,23 +86,15 @@ button[data-start]:disabled {
 
 .field {
     display: flex;
-        /* Робимо контейнер гнучким */
+        
         flex-direction: column;
-        /* Елементи розташовуються вертикально (значення над підписом) */
         align-items: center;
-        /* Центруємо текст горизонтально */
-        font-size: 14px;
-        /* Базовий розмір тексту */
         background-color: #ffffff;
-        /* Білий фон для кожного поля */
         border: 1px solid #dcdcdc;
-        /* Світло-сірий бордер для контурів полів */
         border-radius: 8px;
-        /* Заокруглені кути */
-        width: 120px;
-        /* Фіксована ширина поля */
+        width: 55px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        /* Додає невелику тінь */
+        
 }
 
 .field .value {
