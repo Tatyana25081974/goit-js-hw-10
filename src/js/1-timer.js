@@ -1,14 +1,14 @@
-import flatpickr from "flatpickr";
+import flatpickr from "flatpickr";//Додає функціонал календаря для вибору дати.
 import "flatpickr/dist/flatpickr.min.css";
-import iziToast from "izitoast";
+import iziToast from "izitoast";//Використовується для показу спливаючих повідомлень (наприклад, помилки).
 import "izitoast/dist/css/iziToast.min.css";
 
 let userSelectedDate = null;
 let timerInterval = null;
 
-const startButton = document.querySelector('button[data-start]');
-const datePicker = document.getElementById('datetime-picker');
-const daysSpan = document.querySelector('[data-days]');
+const startButton = document.querySelector('button[data-start]');//Посилання на кнопку "Start". Знайдено за атрибутом data-start. Спочатку кнопка неактивна (disabled), щоб запобігти запуску таймера без вибору дати.
+const datePicker = document.getElementById('datetime-picker');//Поле вибору дати. Знайдено за id="datetime-picker".
+const daysSpan = document.querySelector('[data-days]');//Відображають дні, години, хвилини та секунди. Знайдено за атрибутами data-days, data-hours тощо.
 const hoursSpan = document.querySelector('[data-hours]');
 const minutesSpan = document.querySelector('[data-minutes]');
 const secondsSpan = document.querySelector('[data-seconds]');
@@ -19,10 +19,10 @@ flatpickr(datePicker, {
   time_24hr: true,//Задає 24-годинний формат для вибору часу
   defaultDate: new Date(),//Встановлює поточну дату та час як значення за замовчуванням
   minuteIncrement: 1,//Дозволяє збільшувати або зменшувати час на 1 хвилину при налаштуванні.
-    onClose(selectedDates) {
+    onClose(selectedDates) {   //Функція викликається, коли користувач обирає дату й закриває календар.
       //обробка закриття календаря:
-    const selectedDate = selectedDates[0];//Отримує обрану дату.
-    if (selectedDate <= new Date()) {
+    const selectedDate = selectedDates[0];//Це дата, яку обрав користувач.selectedDates — масив усіх вибраних дат (ми беремо першу).
+    if (selectedDate <= new Date()) { //Якщо дата в минулому або поточна, показується помилка через iziToast.Кнопка "Start" залишається вимкненою.
       iziToast.error({
         title: "Error",
         message: "Please choose a date in the future",
@@ -48,7 +48,7 @@ function convertMs(ms) {
   const minutes = Math.floor(((ms % day) % hour) / minute);//// Кількість хвилин
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);//// Кількість секунд
 
-  return { days, hours, minutes, seconds };
+  return { days, hours, minutes, seconds };//Функція повертає об’єкт: { days, hours, minutes, seconds }.
 }
 //Функція addLeadingZero використовується для форматування чисел, щоб зробити їх двозначними (додавши провідний нуль). 
 function addLeadingZero(value) {

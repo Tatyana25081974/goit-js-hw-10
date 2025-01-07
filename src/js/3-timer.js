@@ -5,7 +5,7 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 //Оголошуємо об'єкт timer, який відповідає за логіку таймера
 const timer = {
-  deadline: null,//дата, до якої буде виконуватися зворотний відлік.
+  deadline: null,//дата, до якої буде виконуватися зворотний відлік.Зберігає кінцеву дату
   intervalId: null,//ідентифікатор таймера для зупинки через clearInterval
   elements: {//об'єкт, що зберігає посилання на елементи в DOM, які відображають дні, години, хвилини й секунди.
     days: document.querySelector('[data-days]'),
@@ -15,10 +15,11 @@ const timer = {
   },
 //Перевіряємо, чи є встановлена дата в deadline. Якщо ні – функція припиняється.
   start() {
-    if (!this.deadline) return;
+    if (!this.deadline) return;//// Якщо немає кінцевої дати, нічого не робимо
 //Розраховується різниця між обраною датою (this.deadline) і поточним часом (Date.now()).
-    this.intervalId = setInterval(() => {
-      const diff = this.deadline - Date.now();
+    this.intervalId = setInterval (() => { // Запускаємо таймер, який працює кожну секунду. Обчислює, скільки часу залишилось.Оновлює HTML.
+
+      const diff = this.deadline - Date.now();// Кінцева дата - поточна дата
 //Перевіряється, чи різниця між кінцевою датою таймера (this.deadline) та поточним часом (Date.now()) дорівнює нулю або стала від'ємною.
       if (diff <= 0) {
         this.stop();// Викликається метод stop(), який:Зупиняє таймер, очищуючи інтервал через clearInterval.Таймер більше не оновлює інтерфейс.
@@ -51,10 +52,10 @@ const timer = {
     const hour = minute * 60;
     const day = hour * 24;
 
-    const days = Math.floor(diff / day);
-    const hours = Math.floor((diff % day) / hour);
-    const minutes = Math.floor(((diff % day) % hour) / minute);
-    const seconds = Math.floor((((diff % day) % hour) % minute) / second);
+    const days = Math.floor(diff / day);// Кількість днів.Округлює значення вниз до цілого числа
+    const hours = Math.floor((diff % day) / hour);// Залишкові години. Допомагає обчислити залишковий час для менших одиниць.
+    const minutes = Math.floor(((diff % day) % hour) / minute);// Залишкові хвилини
+    const seconds = Math.floor((((diff % day) % hour) % minute) / second);// Залишкові секунди
 
     return { days, hours, minutes, seconds };//Метод повертає об'єкт: { days, hours, minutes, seconds }.
 
@@ -66,10 +67,10 @@ const timer = {
   },
 
   updateUI({ days, hours, minutes, seconds }) {
-    this.elements.days.textContent = this.pad(days);
-    this.elements.hours.textContent = this.pad(hours);
-    this.elements.minutes.textContent = this.pad(minutes);
-    this.elements.seconds.textContent = this.pad(seconds);
+    this.elements.days.textContent = this.pad(days);// Оновлює дні.Додає нулі до чисел
+    this.elements.hours.textContent = this.pad(hours);// Оновлює години
+    this.elements.minutes.textContent = this.pad(minutes);// Оновлює хвилини
+    this.elements.seconds.textContent = this.pad(seconds);// Оновлює секунди
   },
 };
 
@@ -84,15 +85,15 @@ flatpickr("#datetime-picker", {
     const startButton = document.querySelector('button[data-start]');
 
     if (selectedDate <= new Date()) {//Якщо вибрана дата менша або дорівнює поточній, показується помилка через iziToast
-      iziToast.error({
+      iziToast.error({ // Показує помилку
         title: "Error",
         message: "Please choose a date in the future",
         position: "topRight",
       });
-      startButton.disabled = true;
+      startButton.disabled = true;// Заблокувати кнопку
     } else {//Інакше встановлюється кінцева дата через timer.setDeadline().
       timer.setDeadline(selectedDate);
-      startButton.disabled = false;
+      startButton.disabled = false;// Активувати кнопку
     }
   },
 });
