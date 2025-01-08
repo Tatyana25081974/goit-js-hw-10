@@ -1,68 +1,71 @@
 body {
     font-family: Montserrat, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #fff;
     color: #333;
     text-align: center;
-    padding: 20px;
+    padding: 28px;
+    max-width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
+    gap: 32px;
 }
 
 .controls {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    /* Відстань між елементами */
-    margin-bottom: 16px;
-    width: 355px;
-    /* Ширина блоку контролів */
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+       
+        margin-bottom: 16px;
+        width: 100%;
+       
 }
 
 input#datetime-picker {
-    height: 40px;
-    padding: 8px 10px;
-    font-size: 14px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    width: 200px;
+    width: 272px;
 }
 
 input#datetime-picker:focus {
     border-color: #007bff;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
 }
 
 button[data-start],
 button[data-pause] {
-    font-size: 12px;
-    font-weight: 600;
+    padding: 6px 10px;
+    font-size: 14px;
     color: white;
     background-color: #007bff;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 30px;
-    /* Ширина кнопок */
-    height: 30px;
-    /* Висота кнопок */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 70px;
+        /* Ширина кнопок */
+        height: 40px;
+        /* Висота кнопок */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        text-align: center;
 }
 
 button[data-start]:hover,
 button[data-pause]:hover {
     background-color: #0056b3;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 button[data-start]:disabled,
@@ -73,59 +76,88 @@ button[data-pause]:disabled {
 }
 
 .timer {
+
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     gap: 24px;
-    width: 355px;
-    /* Ширина таймера */
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 346px;
+    height: auto;
+    background: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e0e0e0;
+    transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Стан "hover" */
+.timer:hover {
+    background-color: #e9ecef;
+    border: 2px solid #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Стан "active" */
+.timer.active {
+    background-color: #d4edda;
+    color: #FFF;
+    border: 2px solid #6c8cff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Стан "disable" */
+.timer.disable {
+    background-color: #cce5ff;
+    border: 2px solid #fafafa;
+
 }
 
 .field {
     display: flex;
+
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    width: calc((100% - (3 * 24px)) / 4);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .field .value {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: bold;
     color: #007bff;
+
 }
 
 .field .label {
-    margin-top: 5px;
-    font-size: 12px;
-    color: #555;
+    margin: 5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #2e2f42;
 }
 
-#error-message {
+/* Стан з помилкою (приклад для повідомлення про помилку) */
+.error-message {
     color: #dc3545;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 10px;
 }
 
 /* Для адаптивності */
 @media (max-width: 768px) {
-    .controls {
-        width: 100%;
-    }
-
     .timer {
         flex-direction: column;
-        align-items: center;
-        gap: 16px;
+        gap: 10px;
     }
 
     .field {
-        width: auto;
+        width: 80%;
+        max-width: 200px;
     }
 }
-
