@@ -20,7 +20,7 @@ body {
         gap: 12px;
        
         margin-bottom: 16px;
-        width: 100%;
+        width: 355px;
        
 }
 
@@ -157,7 +157,16 @@ button[data-pause]:disabled {
     }
 
     .field {
-        width: 80%;
+        width: 100%;
         max-width: 200px;
     }
+        .controls {
+            flex-direction: column;
+            gap: 8px;
+        }
+                button[data-start],
+                button[data-pause] {
+                    width: 100%;
+                   
+                }
 }

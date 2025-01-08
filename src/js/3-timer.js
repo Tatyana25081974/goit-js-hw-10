@@ -47,10 +47,13 @@ const timer = {
   stop() {
     clearInterval(this.intervalId);//Зупиняє виконання функції, яка працює через setInterval.Видаляє інтервал, встановлений методом setInterval. Це припиняє оновлення інтерфейсу.
     this.intervalId = null;//Скидає значення intervalId, щоб вказати, що таймер більше не працює.Змінна intervalId встановлюється у null, щоб показати, що таймер більше не працює
+    document.getElementById("datetime-picker").disabled = false;//Змінює властивість disabled HTML-елемента input з ID datetime-picker на false//Це дозволяє користувачу знову вибирати дату після завершення таймера. 
+    document.querySelector("button[data-pause]").disabled = true;//Деактивує (блокує) кнопку "Pause/Resume", змінюючи її властивість disabled на true.
   },
 
   setDeadline(selectedDate) {
     this.deadline = selectedDate;//метод встановлює кінцеву дату таймера (this.deadline) на передану дату (selectedDate), обрану через Flatpickr.
+    this.remainingTime = selectedDate - Date.now();//Розрахунок залишкового часу:
   },
 
   getTimeComponents(diff) {
@@ -124,9 +127,10 @@ document.querySelector('button[data-start]').addEventListener("click", () => {
 });
 // Обробник кнопки паузи/продовження
 document.querySelector("button[data-pause]").addEventListener("click", () => {//Шукає HTML-елемент із атрибутом data-pause. Це кнопка для зупинки/продовження таймера.Коли користувач натискає кнопку, виконується функція.
+  const pauseButton = document.querySelector("button[data-pause]");
   if (timer.isPaused) {
     timer.start(); // Продовжуємо таймер
-    document.querySelector("button[data-pause]").textContent = "Pause";
+    pauseButton.textContent = "Pause";
   } else {
     clearInterval(timer.intervalId); // Ставимо на паузу
     timer.isPaused = true;
