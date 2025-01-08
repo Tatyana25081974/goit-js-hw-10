@@ -19,7 +19,8 @@ body {
     justify-content: center;
     gap: 8px;
     margin-bottom: 16px;
-    width: 100%;
+    width: 355px;
+        
 
 }
 
@@ -35,7 +36,7 @@ input#datetime-picker {
     margin-bottom: 0;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    width: 272px;
+    width: 200px;
 }
 
 input#datetime-picker:focus {
@@ -43,9 +44,10 @@ input#datetime-picker:focus {
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
 }
 
-button[data-start] {
-    padding: 10px 20px;
-    font-size: 16px;
+button[data-start],
+button[data-pause] {
+    padding: 4px;
+    font-size: 14px;
     color: white;
     background-color: #007bff;
     font-weight: bold;
@@ -53,15 +55,21 @@ button[data-start] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 75px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-button[data-start]:hover {
+button[data-start]:hover,
+button[data-pause]:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
 
-button[data-start]:disabled {
+button[data-start]:disabled,
+button[data-pause]:disabled {
     background-color: #ccc;
     cursor: not-allowed;
     opacity: 0.6;
