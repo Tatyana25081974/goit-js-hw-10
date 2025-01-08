@@ -5,7 +5,7 @@
     <meta charset="Utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Module 9 - Dynamic gallery project with optimized styles and scripts.">
-    <title>Module 9</title>
+    <title>Improved Countdown Timer</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.0/modern-normalize.min.css"
         integrity="sha512-3axTZ/bKFZH5/qLFTl4U+mDbBDFW+5QO5L7D1HnOhlhJbcNDIVJxoNm6It77g0eUdzfKZlHirayqRC2qJaAOJw=="
@@ -16,21 +16,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600&display=swap" rel="stylesheet"
         crossorigin="anonymous">
 
-
-
-
-
   <script type="module" crossorigin src="/goit-js-hw-10/3-timer.js"></script>
   <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-BbSUbo7J.js">
   <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/vendor-C1gPI-5C.css">
-  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/3-timer-DgyHikBs.css">
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/3-timer-Df6FXuoL.css">
 </head>
 
 <body>
     <div class="controls">
         <input type="text" id="datetime-picker" />
         <button type="button" data-start disabled>Start</button>
+        <button type="button" data-pause>Pause</button>
     </div>
     <div class="timer">
         <div class="field">
@@ -50,6 +47,9 @@
             <span class="label">Seconds</span>
         </div>
     </div>
+    <p id="end-time"></p>
+    <audio id="alarm-sound" src="sounds/notification.mp3" preload="auto"></audio>
+
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
