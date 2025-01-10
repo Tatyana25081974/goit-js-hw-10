@@ -15,16 +15,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600&display=swap" rel="stylesheet"
         crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
     <link rel="stylesheet" href="./css/styles2.css">
 
-    
-
-    <script src="./js/2-snackbar.js" type="module" defer></script>
-</head>
+    </head>
 
 <body>
-    
+<form class="form">
+    <label>
+        Delay (ms)
+        <input type="number" name="delay" required />
+    </label>
+
+    <fieldset>
+        <legend>State</legend>
+        <label>
+            <input type="radio" name="state" value="fulfilled" required />
+            Fulfilled
+        </label>
+        <label>
+            <input type="radio" name="state" value="rejected" required />
+            Rejected
+        </label>
+    </fieldset>
+
+    <button type="submit">Create notification</button>
+</form>
+<!-- Скрипт iziToast -->
+<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+<!-- Скрипт для обробки форми -->
+<script src="./js/2-snackbar.js" type="module" defer></script>
 
 </body>
 
