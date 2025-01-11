@@ -27,7 +27,7 @@ body {
 
 label {
     display: flex;
-    flex-direction: column;
+    flex-direction: run;
     align-items: flex-start;
     font-weight: 400;
     color: #2e2f42;
@@ -56,6 +56,9 @@ fieldset {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 legend {
