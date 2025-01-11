@@ -78,7 +78,8 @@ legend {
 .custom-radio {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 4px;
     cursor: pointer;
 }
 
